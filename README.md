@@ -69,10 +69,10 @@ Mise en place de Netdata pour superviser en temps réel :
 ## 📸 Captures d’écran
 
 ### Monitoring Netdata
-![Netdata](docs/netdata.png)
+![Netdata](docs/netdata.PNG)
 
 ### Application accessible via navigateur
-![Application](docs/site.png)
+![Application](docs/site.PNG)
 
 ---
 
