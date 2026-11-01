@@ -52,7 +52,7 @@ def app(environ, start_response):
     </head>
     <body>
         <div class="container">
-            <h1>🚀 Serveur Linux en production</h1>
+            <h1>Serveur Linux en production</h1>
             <p>
                 Reverse Proxy <b>Nginx</b> + Backend <b>Gunicorn</b><br>
                 Architecture déployée sur Ubuntu Server
