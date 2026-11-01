@@ -1,101 +1,33 @@
-# 🚀 Déploiement et Sécurisation d’un Serveur Linux
+# Déploiement et sécurisation d'un serveur Linux
 
-## 📌 Description
+Mise en place d'un serveur Ubuntu hébergeant une application web Python, avec reverse proxy Nginx, sécurisation des accès et supervision. Le projet couvre l'administration système, la configuration réseau et la sécurité d'un serveur exposé.
 
-Ce projet présente la mise en place complète d’un serveur Linux incluant le déploiement d’une application web, la configuration d’un reverse proxy, la sécurisation des accès et la supervision en temps réel.
+## Technologies
 
-L’objectif est de démontrer des compétences pratiques en administration système, réseau et sécurité.
+Ubuntu Server, Nginx (reverse proxy), Gunicorn (WSGI), Python (backend), systemd (services), UFW (pare-feu), Fail2ban (protection brute-force), Netdata (supervision).
 
----
+## Architecture
 
-## ⚙️ Technologies utilisées
+Le client envoie ses requêtes HTTP à Nginx, qui les transmet à Gunicorn. Gunicorn exécute l'application Python et renvoie la réponse.
 
-- Ubuntu Server
-- Nginx (Reverse Proxy)
-- Gunicorn (serveur WSGI)
-- Python (application backend)
-- systemd (gestion des services)
-- UFW (pare-feu)
-- Fail2ban (protection contre les attaques)
-- Netdata (monitoring en temps réel)
+## Déploiement
 
----
+Installation et configuration d'Ubuntu Server. Mise en place du reverse proxy Nginx. Déploiement de l'application Python via Gunicorn. Création d'un service systemd pour assurer la persistance au redémarrage.
 
-## 🧱 Architecture
+## Sécurisation
 
-Client → Nginx → Gunicorn → Application Python
+L'accès SSH est protégé par authentification par clé, avec désactivation du mot de passe. UFW restreint les ports aux services essentiels. Fail2ban bloque les tentatives de brute-force. L'objectif est de réduire la surface d'attaque et de contrôler les accès au serveur.
 
-- Nginx reçoit les requêtes HTTP
-- Redirige vers Gunicorn
-- Gunicorn exécute l’application Python
+## Supervision
 
----
+Netdata supervise en temps réel l'utilisation CPU, la mémoire, l'activité disque, le trafic réseau et les processus système (Nginx, Gunicorn). Le tableau de bord est accessible sur le port 19999.
 
-## 🚀 Déploiement
+## Captures
 
-- Installation et configuration d’un serveur Ubuntu
-- Mise en place d’un reverse proxy avec Nginx
-- Déploiement d’une application Python via Gunicorn
-- Création d’un service systemd pour assurer la persistance
+Monitoring Netdata : `docs/netdata.PNG`
 
----
+Application accessible via navigateur : `docs/site.PNG`
 
-## 🔐 Sécurisation du serveur
+## Limites et suites possibles
 
-Une attention particulière a été portée à la sécurité :
-
-- Accès SSH sécurisé par authentification par clé (désactivation du mot de passe)
-- Restriction des ports via UFW (accès limité aux services essentiels)
-- Protection contre les attaques brute-force avec Fail2ban
-
-👉 Objectif : réduire la surface d’attaque et sécuriser l’accès au serveur
-
----
-
-## 📊 Monitoring
-
-Mise en place de Netdata pour superviser en temps réel :
-
-- Utilisation CPU
-- Mémoire (RAM)
-- Activité disque
-- Trafic réseau
-- Processus système (Nginx, Gunicorn, etc.)
-
-👉 Dashboard accessible via le port 19999
-
----
-
-## 📸 Captures d’écran
-
-### Monitoring Netdata
-![Netdata](docs/netdata.PNG)
-
-### Application accessible via navigateur
-![Application](docs/site.PNG)
-
----
-
-## 🎯 Compétences démontrées
-
-- Administration système Linux
-- Configuration réseau (ports, accès, services)
-- Mise en place d’un reverse proxy
-- Gestion des services avec systemd
-- Sécurisation d’un serveur (SSH, firewall, Fail2ban)
-- Monitoring et supervision des performances
-
----
-
-## 💡 Améliorations possibles
-
-- Mise en place du HTTPS (Let’s Encrypt)
-- Containerisation avec Docker
-- Centralisation des logs
-- Monitoring avancé avec Grafana
-
----
-
-## 👨‍💻 Auteur
-
-Projet réalisé dans le cadre de préparation à un poste en administration systèmes et réseaux.
+Le serveur n'est pas encore en HTTPS. Une mise en place de Let's Encrypt, une containerisation avec Docker, une centralisation des logs et un monitoring avancé avec Grafana sont les prochaines étapes envisagées.
